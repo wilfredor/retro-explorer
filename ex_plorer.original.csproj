@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>ex_plorer</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net472</TargetFramework>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+    <PackageReference Include="Costura.Fody" Version="5.8.0-alpha0098" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="6.8.2" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="assets\comctl32.dll" LogicalName="ex_plorer.Assets.comctl32.dll" />
+    <EmbeddedResource Include="assets\icons\classic_app.ico" LogicalName="ex_plorer.Assets.Icons.classic_app.ico" />
+    <EmbeddedResource Include="assets\icons\classic_desktop.ico" LogicalName="ex_plorer.Assets.Icons.classic_desktop.ico" />
+    <EmbeddedResource Include="assets\icons\classic_mycomputer.ico" LogicalName="ex_plorer.Assets.Icons.classic_mycomputer.ico" />
+    <EmbeddedResource Include="assets\icons\classic_drive_fixed.ico" LogicalName="ex_plorer.Assets.Icons.classic_drive_fixed.ico" />
+    <EmbeddedResource Include="assets\icons\classic_drive_removable.ico" LogicalName="ex_plorer.Assets.Icons.classic_drive_removable.ico" />
+    <EmbeddedResource Include="assets\icons\classic_drive_cd.ico" LogicalName="ex_plorer.Assets.Icons.classic_drive_cd.ico" />
+    <EmbeddedResource Include="assets\icons\classic_drive_network.ico" LogicalName="ex_plorer.Assets.Icons.classic_drive_network.ico" />
+    <EmbeddedResource Include="assets\icons\classic_folder_closed.ico" LogicalName="ex_plorer.Assets.Icons.classic_folder_closed.ico" />
+    <EmbeddedResource Include="assets\icons\classic_folder_open.ico" LogicalName="ex_plorer.Assets.Icons.classic_folder_open.ico" />
+    <EmbeddedResource Include="assets\icons\classic_file.ico" LogicalName="ex_plorer.Assets.Icons.classic_file.ico" />
+    <EmbeddedResource Include="assets\icons\w98_address_book_copy.ico" LogicalName="ex_plorer.Assets.Icons.w98_address_book_copy.ico" />
+    <EmbeddedResource Include="assets\icons\w98_write_file.ico" LogicalName="ex_plorer.Assets.Icons.w98_write_file.ico" />
+    <EmbeddedResource Include="assets\icons\w98_display_properties.ico" LogicalName="ex_plorer.Assets.Icons.w98_display_properties.ico" />
+    <EmbeddedResource Include="assets\icons\w98_shell_window1.ico" LogicalName="ex_plorer.Assets.Icons.w98_shell_window1.ico" />
+    <EmbeddedResource Include="assets\icons\w98_shell_window2.ico" LogicalName="ex_plorer.Assets.Icons.w98_shell_window2.ico" />
+    <EmbeddedResource Include="assets\icons\w98_shell_window3.ico" LogicalName="ex_plorer.Assets.Icons.w98_shell_window3.ico" />
+    <EmbeddedResource Include="assets\icons\w98_shell_window4.ico" LogicalName="ex_plorer.Assets.Icons.w98_shell_window4.ico" />
+  </ItemGroup>
+</Project>
