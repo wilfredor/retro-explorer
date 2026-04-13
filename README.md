@@ -3,7 +3,8 @@
 A Windows 95-style file explorer rebuilt from scratch as a WinForms application. Designed to replicate the look, feel, and behavior of the original Windows 95 Explorer while running on modern Windows.
 
 ![.NET Framework 4.7.2](https://img.shields.io/badge/.NET_Framework-4.7.2-blue)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
+![.NET Framework 2.0](https://img.shields.io/badge/.NET_Framework-2.0_(Win2K)-orange)
+![Platform](https://img.shields.io/badge/platform-Windows_2000+-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
@@ -44,14 +45,16 @@ This project was reconstructed from the `ex_plorer.exe` binary found in [Project
 
 ## Build
 
+### Modern build (.NET Framework 4.7.2)
+
 Requires the .NET Framework 4.7.2 targeting pack (included with Visual Studio or available separately).
 
-### Visual Studio
+#### Visual Studio
 
 1. Open `ex_plorer.original.csproj`
 2. Build in Release
 
-### Command line
+#### Command line
 
 ```powershell
 dotnet build ex_plorer.original.csproj -c Release
@@ -65,9 +68,53 @@ bin\Release\net472\ex_plorer.exe
 
 No external DLLs required. All dependencies (including toolbar icon resources) are embedded in the exe via [Costura.Fody](https://github.com/Fody/Costura).
 
+### Windows 2000 build (.NET Framework 2.0)
+
+The `win2k/` directory contains a full port of the source code downgraded to C# 2.0 / .NET Framework 2.0, compatible with **Windows 2000 SP4** and later.
+
+#### Requirements
+
+- .NET Framework 2.0 SDK (the `csc.exe` compiler at `C:\Windows\Microsoft.NET\Framework\v2.0.50727\`)
+
+#### Build
+
+```cmd
+cd win2k
+build.bat
+```
+
+Output:
+
+```
+win2k\ex_plorer.exe
+```
+
+#### Running on Windows 2000
+
+The target machine needs the [.NET Framework 2.0 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=6523) installed (~23 MB). No other dependencies are required.
+
+#### What changed in the port
+
+The source was mechanically downgraded from C# 12 / .NET 4.7.2 to C# 2.0 / .NET 2.0:
+
+- `async/await` replaced with synchronous calls
+- LINQ replaced with manual loops
+- String interpolation replaced with concatenation
+- Auto-properties replaced with backing fields
+- Object/collection initializers replaced with assignments
+- Pattern matching replaced with explicit casts
+- `string.IsNullOrWhiteSpace` replaced with a custom helper
+- `EnumerateDirectories`/`EnumerateFileSystemInfos` replaced with `GetDirectories`/`GetFileSystemInfos`
+- `Stream.CopyTo` replaced with manual buffer copy
+- Extension methods converted to static methods
+- All `using` declarations converted to `try/finally` with `Dispose`
+
 ## Project structure
 
 ```
+win2k/                            Windows 2000 port (C# 2.0 / .NET 2.0)
+  build.bat                       Build script using .NET 2.0 csc.exe
+  *.cs                            Downgraded source files
 ex_plorer/
   ExplorerForm.cs               Main form, constructor, icon setup
   ExplorerForm.Fields.cs        UI control declarations
